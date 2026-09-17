@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruzzlee Salon // whoami</title>
+<meta name="description" content="Portfolio of Ruzzlee Salon — cybersecurity projects, competitions, and contact.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23071F42'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' fill='%23F5B400' text-anchor='middle'%3E%3E_%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF;
+    --navy:#0A2E5C;
+    --navy-deep:#071F42;
+    --blue:#2A6DF4;
+    --yellow:#F5B400;
+    --black:#0A0A0A;
+    --grey-line:#E4E8EF;
+    --grey-soft:#F5F7FB;
+    --max-w:1080px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--white);
+    color:var(--black);
+    font-family:'Inter', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    margin:0;
+    color:var(--navy-deep);
+    letter-spacing:-0.01em;
+  }
+  a{color:var(--blue); text-decoration:none;}
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--blue);
+  }
+  .wrap{max-width:var(--max-w); margin:0 auto; padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--grey-line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:68px;
+  }
+  .brand{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600; font-size:1.05rem; color:var(--navy-deep);
+  }
+  .brand span{color:var(--blue);}
+  .nav-links{
+    display:flex; gap:32px; list-style:none; margin:0; padding:0;
+  }
+  .nav-links a{
+    color:var(--black); font-weight:500; font-size:0.95rem;
+    padding:6px 2px; border-bottom:2px solid transparent;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .nav-links a:hover{color:var(--blue); border-bottom-color:var(--blue);}
+  .burger{
+    display:none; background:none; border:none; cursor:pointer;
+    width:40px; height:40px; align-items:center; justify-content:center;
+  }
+  .burger span, .burger span::before, .burger span::after{
+    content:''; display:block; width:22px; height:2px; background:var(--navy-deep);
+    position:relative; transition:transform .2s ease, opacity .2s ease;
+  }
+  .burger span::before{position:absolute; top:-7px;}
+  .burger span::after{position:absolute; top:7px;}
+  .burger.open span{background:transparent;}
+  .burger.open span::before{transform:translateY(7px) rotate(45deg);}
+  .burger.open span::after{transform:translateY(-7px) rotate(-45deg);}
+
+  .mobile-menu{
+    display:none; flex-direction:column;
+    background:var(--white); border-bottom:1px solid var(--grey-line);
+  }
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{
+    padding:14px 28px; color:var(--black); font-weight:500;
+    border-top:1px solid var(--grey-line);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--navy-deep);
+    color:var(--white);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    padding-top:110px; padding-bottom:100px;
+    position:relative; z-index:2;
+  }
+  .hero .mono{color:var(--yellow); display:block; margin-bottom:18px; min-height:1.1em;}
+  #typedLine::after{
+    content:'';
+    display:inline-block; width:7px; height:1em; margin-left:2px;
+    background:var(--yellow);
+    vertical-align:-2px;
+    animation:blink 1s step-end infinite;
+  }
+  @keyframes blink{50%{opacity:0;}}
+  @media (prefers-reduced-motion: reduce){
+    #typedLine::after{animation:none;}
+  }
+  .hero h1{
+    color:var(--white);
+    font-size:clamp(2.4rem, 5vw, 3.6rem);
+    font-weight:700;
+    max-width:14ch;
+    position:relative;
+    display:inline-block;
+  }
+  .hero h1 .sig{
+    position:absolute;
+    left:0; bottom:-14px;
+    width:62%; height:20px;
+    overflow:visible;
+  }
+  .hero h1 .sig path{
+    fill:none;
+    stroke:var(--blue);
+    stroke-width:2.5;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-dasharray:220;
+    stroke-dashoffset:220;
+    animation:sigdraw 1.4s ease-out 0.6s forwards;
+  }
+  @keyframes sigdraw{ to{ stroke-dashoffset:0; } }
+  @media (prefers-reduced-motion: reduce){
+    .hero h1 .sig path{animation:none; stroke-dashoffset:0;}
+  }
+  .hero p.lead{
+    color:#C9D6EA;
+    font-size:1.15rem;
+    max-width:52ch;
+    margin-top:22px;
+  }
+  .hero-contact{
+    display:flex; gap:18px; flex-wrap:wrap; margin-top:36px;
+  }
+  .hero-contact a{
+    display:inline-flex; align-items:center; gap:8px;
+    color:var(--white); font-size:0.92rem; font-weight:500;
+    border:1px solid rgba(255,255,255,0.25);
+    padding:9px 16px; border-radius:2px;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .hero-contact a:hover{border-color:var(--yellow); background:rgba(245,180,0,0.08);}
+  .hero-contact svg{width:16px; height:16px; stroke:currentColor; fill:none;}
+
+  /* scan-line motif */
+  .scan{
+    position:absolute; inset:0; z-index:1; pointer-events:none;
+    background-image:
+      linear-gradient(rgba(42,109,244,0.10) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(42,109,244,0.10) 1px, transparent 1px);
+    background-size:38px 38px;
+    mask-image:radial-gradient(circle at 75% 30%, black 0%, transparent 65%);
+  }
+  .scan::after{
+    content:'';
+    position:absolute; left:0; right:0; height:2px;
+    background:linear-gradient(90deg, transparent, var(--blue), transparent);
+    top:0;
+    animation:scanmove 5.5s linear infinite;
+    opacity:0.6;
+  }
+  @keyframes scanmove{
+    0%{top:0%;}
+    100%{top:100%;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .scan::after{animation:none;}
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{padding:88px 0;}
+  .section-head{margin-bottom:44px; max-width:60ch;}
+  .section-head .mono{margin-bottom:10px; display:block;}
+  .section-head h2{font-size:1.9rem; font-weight:600;}
+  .section-head p{color:#3A3A3A; margin-top:12px; font-size:1.02rem;}
+
+  /* ---------- CYBERSECURITY INITIATIVES ---------- */
+  .initiatives{background:var(--grey-soft);}
+  .init-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:1px;
+    background:var(--grey-line);
+    border:1px solid var(--grey-line);
+  }
+  .init-card{
+    background:var(--white);
+    padding:32px 28px;
+    border-left:3px solid var(--blue);
+  }
+  .init-card:nth-child(2){border-left-color:var(--yellow);}
+  .init-card:nth-child(3){border-left-color:var(--navy);}
+  .init-card .mono{margin-bottom:14px; display:block;}
+  .init-card h3{font-size:1.15rem; font-weight:600; margin-bottom:10px;}
+  .init-card p{font-size:0.95rem; color:#3A3A3A;}
+  .init-card .tags{margin-top:16px; display:flex; gap:8px; flex-wrap:wrap;}
+  .init-card .tags span{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem;
+    color:var(--navy); background:var(--grey-soft);
+    padding:3px 8px; border:1px solid var(--grey-line);
+  }
+
+  /* ---------- ACHIEVEMENTS (timeline) ---------- */
+  .timeline{position:relative; margin-top:8px;}
+  .timeline::before{
+    content:''; position:absolute; left:74px; top:6px; bottom:6px;
+    width:2px; background:var(--grey-line);
+  }
+  .t-item{
+    position:relative; padding-left:112px; margin-bottom:38px;
+  }
+  .t-item:last-child{margin-bottom:0;}
+  .t-item .t-date{
+    position:absolute; left:0; top:2px; width:64px; text-align:right;
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--navy);
+  }
+  .t-item::after{
+    content:''; position:absolute; left:69px; top:5px;
+    width:11px; height:11px; border-radius:50%;
+    background:var(--white); border:2px solid var(--blue);
+  }
+  .t-item h3{font-size:1.05rem; font-weight:600; margin-bottom:6px;}
+  .t-item p{font-size:0.94rem; color:#3A3A3A; margin:0;}
+  .t-item a.t-link{font-size:0.86rem; margin-top:8px; display:inline-block;}
+  #achievements-list .empty{
+    padding-left:112px; color:#6B7280; font-size:0.94rem;
+  }
+
+  /* ---------- INTERESTS ---------- */
+  .interests{background:var(--grey-soft);}
+  .chip-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:8px;}
+  .chip{
+    background:var(--white);
+    border:1px solid var(--grey-line);
+    padding:10px 18px;
+    font-size:0.92rem; font-weight:500; color:var(--navy-deep);
+  }
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  footer{
+    background:var(--navy-deep); color:var(--white);
+    padding:76px 0 40px;
+  }
+  footer h2{color:var(--white); font-size:1.8rem; max-width:16ch;}
+  footer p.lead{color:#C9D6EA; margin-top:14px; max-width:48ch;}
+  .cta-row{margin-top:32px; display:flex; gap:16px; flex-wrap:wrap; align-items:center;}
+  .btn-primary{
+    background:var(--yellow); color:var(--navy-deep);
+    font-weight:600; font-size:0.95rem;
+    padding:13px 26px; border:none; cursor:pointer;
+    display:inline-flex; align-items:center; gap:8px;
+    transition:transform .12s ease;
+  }
+  .btn-primary:hover{transform:translateY(-1px);}
+  .btn-secondary{
+    background:transparent; color:var(--white);
+    font-weight:600; font-size:0.95rem;
+    padding:12px 25px; border:1px solid rgba(255,255,255,0.35);
+    display:inline-flex; align-items:center; gap:8px;
+    transition:border-color .12s ease, background .12s ease;
+  }
+  .btn-secondary:hover{border-color:var(--yellow); background:rgba(245,180,0,0.06);}
+  .contact-links{display:flex; gap:22px; flex-wrap:wrap; margin-top:6px;}
+  .contact-links a{color:#C9D6EA; font-size:0.92rem; display:inline-flex; gap:8px; align-items:center;}
+  .contact-links a:hover{color:var(--yellow);}
+  .contact-links svg{width:16px; height:16px; stroke:currentColor; fill:none;}
+  .foot-bottom{
+    margin-top:60px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.12);
+    font-size:0.82rem; color:#8FA3C4;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 880px){
+    .init-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width: 720px){
+    .nav-links{display:none;}
+    .burger{display:flex;}
+    .hero .wrap{padding-top:70px; padding-bottom:64px;}
+    section{padding:60px 0;}
+    .timeline::before{left:54px;}
+    .t-item{padding-left:84px;}
+    .t-item .t-date{width:44px;}
+    .t-item::after{left:49px;}
+    footer{padding:56px 0 32px;}
+  }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--blue); outline-offset:2px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">RUZZLEE SALON<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#initiatives">Cybersecurity</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#interests">Interests</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false"><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home">Home</a>
+    <a href="#initiatives">Cybersecurity</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#interests">Interests</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<!-- ---------- HERO ---------- -->
+<section class="hero" id="home">
+  <div class="scan"></div>
+  <div class="wrap">
+    <span class="mono" id="typedLine">&nbsp;</span>
+    <h1>Ruzzlee Salon<svg class="sig" viewBox="0 0 220 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M3 20c14-14 22-14 30-2 6 9 10 9 16-1 8-13 16-13 24 0 6 9 11 9 17-1 7-12 16-12 23 0 6 9 11 9 17-2 6-11 15-12 22-3 5 6 12 7 18 1" />
+    </svg></h1>
+    <p class="lead">
+      Cybersecurity analyst focused on traffic analysis, incident reconstruction, and digital
+      forensics. I reconstructed a full malware infection chain from a raw packet capture — down
+      to the compromised host, the C2 infrastructure, and every step mapped to MITRE ATT&amp;CK —
+      and placed top-14 nationally in TrendMicro's CTF. ISC² Certified in Cybersecurity, currently
+      looking for a SOC analyst or security engineering role.
+    </p>
+    <div class="hero-contact">
+      <a href="mailto:ruzzleesalon@gmail.com">
+        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 6l9 7 9-7M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1z"/></svg>
+        ruzzleesalon@gmail.com
+      </a>
+      <a href="tel:+639395336718">
+        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .6 3a2 2 0 01-.5 2L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012-.5c1 .3 2 .5 3 .6a2 2 0 011.7 2z"/></svg>
+        +63 939 533 6718
+      </a>
+      <a href="https://www.linkedin.com/in/ruzzlee-salon" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/gitshroom" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 00-1-2.6c3 0 6-2 6-5.5a4.5 4.5 0 00-1.3-3.2 4 4 0 00-.1-3.2s-1 0-3 1.4a11.4 11.4 0 00-6 0C7.5 6 6.5 6 6.5 6a4 4 0 00-.1 3.2A4.5 4.5 0 005 12.5c0 3.5 3 5.5 6 5.5a3.4 3.4 0 00-1 2.6V24"/></svg>
+        GitHub
+      </a>
+      <a href="resume.pdf" download>
+        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg>
+        Download résumé
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- CYBERSECURITY INITIATIVES ---------- -->
+<section class="initiatives" id="initiatives">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="mono">[SEC-INITIATIVES]</span>
+      <h2>Cybersecurity initiatives</h2>
+      <p>A few projects and results that show how I approach security problems end to end.</p>
+    </div>
+    <div class="init-grid">
+      <article class="init-card">
+        <span class="mono">01</span>
+        <h3>KongTuke ClickFix traffic analysis</h3>
+        <p>Reconstructed a full ClickFix social-engineering infection chain from raw packet
+        capture — identified the compromised host via Kerberos/SAMR traffic, characterized an
+        encrypted payload with entropy analysis, and mapped C2 beaconing and Cloudflare-fronted
+        infrastructure. Every finding mapped to MITRE ATT&amp;CK.
+        <a href="https://github.com/gitshroom/ClickFix-malwareTrafficAnalysis" target="_blank" rel="noopener" style="display:block; margin-top:10px; font-size:0.88rem;">Read the full writeup →</a></p>
+        <div class="tags"><span>Wireshark</span><span>MITRE ATT&amp;CK</span><span>PCAP</span></div>
+      </article>
+      <article class="init-card">
+        <span class="mono">02</span>
+        <h3>SIEM &amp; log analysis labs</h3>
+        <p>Completed a self-directed lab suite investigating a web server brute-force attack, a
+        Linux privilege-escalation/web-shell incident, and a Windows authentication anomaly —
+        end to end in Splunk, from raw logs to attack signature recognition.</p>
+        <div class="tags"><span>Splunk</span><span>TryHackMe</span><span>Log Analysis</span></div>
+      </article>
+      <article class="init-card">
+        <span class="mono">03</span>
+        <h3>Competitive CTF &amp; hackathons</h3>
+        <p>Top 14 nationally in TrendMicro's CTF preliminaries, 2nd Runner-Up at DICT Hack4Gov
+        CAR, and 1st Runner-Up at the QCSP Hackathon — competing head-to-head on live offensive
+        and defensive security challenges.</p>
+        <div class="tags"><span>CTF</span><span>Incident Response</span><span>Teamwork</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- ACHIEVEMENTS ---------- -->
+<section id="achievements">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="mono">[ACHIEVEMENTS]</span>
+      <h2>Achievements</h2>
+      <p>Certifications, competitions, and milestones — updated as they happen.</p>
+    </div>
+    <div class="timeline" id="achievements-list"></div>
+  </div>
+</section>
+
+<!-- ---------- INTERESTS ---------- -->
+<section class="interests" id="interests">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="mono">[INTERESTS]</span>
+      <h2>Beyond the work</h2>
+      <p>Areas I read about, tinker with, or compete in outside of client work.</p>
+    </div>
+    <div class="chip-row">
+      <span class="chip">Capture the Flag (CTF)</span>
+      <span class="chip">Open-source security tools</span>
+      <span class="chip">Home lab tinkering</span>
+      <span class="chip">Threat intel reading</span>
+      <span class="chip">Chess</span>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- CONTACT / FOOTER ---------- -->
+<footer id="contact">
+  <div class="wrap">
+    <h2>Let's work together.</h2>
+    <p class="lead">Open to security engineering, SOC analyst, and related roles. I usually reply within a day.</p>
+    <div class="cta-row">
+      <a class="btn-primary" href="mailto:ruzzleesalon@gmail.com">Email me</a>
+      <a class="btn-secondary" href="resume.pdf" download>Download résumé</a>
+    </div>
+    <div class="contact-links" style="margin-top:28px;">
+      <a href="https://www.linkedin.com/in/ruzzlee-salon" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        linkedin.com/in/ruzzlee-salon
+      </a>
+      <a href="https://github.com/gitshroom" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 00-1-2.6c3 0 6-2 6-5.5a4.5 4.5 0 00-1.3-3.2 4 4 0 00-.1-3.2s-1 0-3 1.4a11.4 11.4 0 00-6 0C7.5 6 6.5 6 6.5 6a4 4 0 00-.1 3.2A4.5 4.5 0 005 12.5c0 3.5 3 5.5 6 5.5a3.4 3.4 0 00-1 2.6V24"/></svg>
+        github.com/gitshroom
+      </a>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Ruzzlee Salon</span>
+      <span>Built as a static site — no tracking, no backend.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---------- Mobile menu toggle ----------
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burgerBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    burgerBtn.classList.toggle('open', isOpen);
+    burgerBtn.setAttribute('aria-expanded', isOpen);
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      burgerBtn.classList.remove('open');
+      burgerBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ---------- Footer year ----------
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ---------- Hero typing effect ----------
+  const typedEl = document.getElementById('typedLine');
+  const lines = [
+    '// cybersecurity analyst',
+    '// traffic analysis & digital forensics',
+    '// currently open to work'
+  ];
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reduceMotion) {
+    typedEl.textContent = lines[0];
+  } else {
+    let lineIndex = 0, charIndex = 0, deleting = false;
+    const TYPE_MS = 45, DELETE_MS = 25, HOLD_MS = 1600, GAP_MS = 300;
+
+    function tick(){
+      const current = lines[lineIndex];
+      if (!deleting){
+        charIndex++;
+        typedEl.textContent = current.slice(0, charIndex);
+        if (charIndex === current.length){
+          deleting = true;
+          setTimeout(tick, HOLD_MS);
+          return;
+        }
+        setTimeout(tick, TYPE_MS);
+      } else {
+        charIndex--;
+        typedEl.textContent = current.slice(0, charIndex);
+        if (charIndex === 0){
+          deleting = false;
+          lineIndex = (lineIndex + 1) % lines.length;
+          setTimeout(tick, GAP_MS);
+          return;
+        }
+        setTimeout(tick, DELETE_MS);
+      }
+    }
+    tick();
+  }
+
+  // ---------- A little something for anyone poking at devtools ----------
+  console.log(
+    '%cnice — you opened devtools.',
+    'color:#F5B400; font-family:monospace; font-size:14px; font-weight:bold;'
+  );
+  console.log(
+    '%cif you\'re hiring for security roles, my inbox is open: ruzzleesalon@gmail.com',
+    'color:#2A6DF4; font-family:monospace; font-size:12px;'
+  );
+
+  // ---------- Achievements data ----------
+  // Achievements live in achievements.json (same folder as this file).
+  // To add a new one later, open achievements.json and add an object to
+  // the array — newest first. No database, no rebuild step.
+  const list = document.getElementById('achievements-list');
+
+  fetch('achievements.json')
+    .then(res => {
+      if (!res.ok) throw new Error('Could not load achievements.json');
+      return res.json();
+    })
+    .then(achievements => {
+      if (!achievements || achievements.length === 0) {
+        list.innerHTML = '<div class="empty">No achievements added yet — check back soon.</div>';
+        return;
+      }
+      list.innerHTML = achievements.map(item => `
+        <div class="t-item">
+          <span class="t-date">${item.date}</span>
+          <h3>${item.title}</h3>
+          <p>${item.description}</p>
+          ${item.link ? `<a class="t-link" href="${item.link}" target="_blank" rel="noopener">View →</a>` : ''}
+        </div>
+      `).join('');
+    })
+    .catch(() => {
+      // Fetching a local JSON file fails if you open this page directly by
+      // double-clicking it (file:// links block fetch). Run a local server
+      // (e.g. `python3 -m http.server`) or deploy the site to see this load —
+      // it will work correctly once hosted on Netlify, GitHub Pages, etc.
+      list.innerHTML = '<div class="empty">Achievements will appear here once the site is served over http(s).</div>';
+    });
+</script>
+
+</body>
+</html>
